@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 
 export const LoadingSpinner = () => {
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-background">
+    <div className="fixed inset-0 flex items-center justify-center bg-background/80 backdrop-blur-sm">
       <motion.div
         animate={{
           rotate: 360,

@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Card } from "@/components/ui/card";
 
 export const MoodboardDisplay = () => {
-  // Placeholder data - replace with actual API data
+  // Using a static image for now
   const moodboardData = {
-    imageUrl: "https://source.unsplash.com/random/1200x800",
-    title: "Digital Nostalgia Wave",
-    description: "A fusion of retro computing aesthetics with modern minimalism",
-    keywords: ["retrowave", "digital art", "minimalism", "neon", "synthwave"],
+    imageUrl: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe",
+    title: "Digital Minimalism",
+    description: "A blend of modern minimalism with organic elements",
+    keywords: ["minimalism", "modern", "organic", "design"],
   };
 
   return (

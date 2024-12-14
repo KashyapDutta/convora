@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Download, TrendingUp, Calendar } from 'lucide-react';
+import { Download, Calendar } from 'lucide-react';
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import { MoodboardDisplay } from '@/components/MoodboardDisplay';
@@ -14,19 +14,18 @@ const Index = () => {
   const { toast } = useToast();
   
   useEffect(() => {
-    // Simulate loading
+    // Simulate initial loading
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1000);
     return () => clearTimeout(timer);
   }, []);
 
   const handleDownloadReport = () => {
     toast({
-      title: "Downloading Report",
-      description: "Your PDF report is being generated...",
+      title: "Coming Soon",
+      description: "PDF report generation is under development",
     });
-    // Implement PDF download logic here
   };
 
   if (isLoading) {
@@ -59,7 +58,7 @@ const Index = () => {
             <TabsTrigger value="analysis">Trend Analysis</TabsTrigger>
           </TabsList>
 
-          <TabsContent value="moodboard" className="space-y-8">
+          <TabsContent value="moodboard">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -69,24 +68,24 @@ const Index = () => {
             </motion.div>
           </TabsContent>
 
-          <TabsContent value="analysis" className="space-y-8">
+          <TabsContent value="analysis">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.6 }}
             >
               <TrendAnalysis />
+              <div className="mt-8">
+                <CrawlForm />
+              </div>
             </motion.div>
-            <div className="mt-8">
-              <CrawlForm />
-            </div>
           </TabsContent>
         </Tabs>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
           className="flex justify-center gap-4 mt-12"
         >
           <Button
