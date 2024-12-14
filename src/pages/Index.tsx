@@ -6,6 +6,8 @@ import { useToast } from "@/components/ui/use-toast";
 import { MoodboardDisplay } from '@/components/MoodboardDisplay';
 import { TrendAnalysis } from '@/components/TrendAnalysis';
 import { LoadingSpinner } from '@/components/LoadingSpinner';
+import { CrawlForm } from '@/components/CrawlForm';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -51,29 +53,41 @@ const Index = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-16"
-        >
-          <MoodboardDisplay />
-        </motion.div>
+        <Tabs defaultValue="moodboard" className="space-y-8">
+          <TabsList className="grid w-full max-w-md mx-auto grid-cols-2">
+            <TabsTrigger value="moodboard">Current Moodboard</TabsTrigger>
+            <TabsTrigger value="analysis">Trend Analysis</TabsTrigger>
+          </TabsList>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mb-16"
-        >
-          <TrendAnalysis />
-        </motion.div>
+          <TabsContent value="moodboard" className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6 }}
+            >
+              <MoodboardDisplay />
+            </motion.div>
+          </TabsContent>
+
+          <TabsContent value="analysis" className="space-y-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <TrendAnalysis />
+            </motion.div>
+            <div className="mt-8">
+              <CrawlForm />
+            </div>
+          </TabsContent>
+        </Tabs>
 
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex justify-center gap-4"
+          className="flex justify-center gap-4 mt-12"
         >
           <Button
             onClick={handleDownloadReport}
